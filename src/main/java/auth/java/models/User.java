@@ -2,19 +2,44 @@ package auth.java.models;
 
 import jakarta.persistence.*;
 
-@SuppressWarnings("ALL")
+
 @Entity
 @Table(name = "users")
 public class User {
 
     @Id
+    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "user_role")
     private String role;
+
+    public User() {}
+
+    public User(Long id, String username, String password, String email, String role) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+    }
+
+    public User(String username, String password, String email, String role) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+    }
 
     public Long getId() {
         return id;
